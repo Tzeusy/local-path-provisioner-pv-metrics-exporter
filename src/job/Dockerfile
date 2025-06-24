@@ -1,4 +1,4 @@
-FROM python:3.7.13-alpine3.16
+FROM python:3.12-alpine
 WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN apk update \

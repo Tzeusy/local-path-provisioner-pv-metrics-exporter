@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: job
-        image: ugurozturk99/lp-exporter-job:v0.0.32-SNAPSHOT
+        image: EXPORTER_JOB_IMAGE
         command: ["python3", "job.py"]
         env:
           - name: PUSHGATEWAY_ADDRESS

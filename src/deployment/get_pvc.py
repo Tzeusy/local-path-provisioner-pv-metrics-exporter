@@ -54,6 +54,10 @@ except KeyError:
 else:
   volumeProvisionPath = os.environ["VOLUMEPROVISIONPATH"]
 
+jobImage = os.getenv('EXPORTER_JOB_IMAGE')
+if jobImage is None:
+  raise ValueError('Please export the EXPORTER_JOB_IMAGE environment variable')
+
 while True:
   logger.info("Sleeping for 10 seconds...")
   time.sleep(10)
@@ -104,6 +108,7 @@ while True:
     data = data.replace('JOBLOGLEVEL', jobloglevel)
     data = data.replace('PGWADRESS', registryAddress)
     data = data.replace('VMPPATH', volumeProvisionPath)
+    data = data.replace('EXPORTER_JOB_IMAGE', jobImage)
     fin.close()
     fin = open(yaml_file, "wt")
     fin.write(data)
